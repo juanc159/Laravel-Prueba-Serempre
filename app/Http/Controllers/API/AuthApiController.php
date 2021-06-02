@@ -76,4 +76,14 @@ class AuthApiController extends Controller
         return response($response, 201);
 
     }
+
+
+    public function update(Request $request, User $usuario){
+            //$usuario->update($request->all());
+            return response()->json([
+                'data' => $usuario->update($request->all()),
+                'res' => true,
+                'msg' => 'Actualizado con exito'
+            ]);
+    }
 }

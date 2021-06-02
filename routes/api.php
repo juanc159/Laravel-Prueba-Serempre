@@ -28,7 +28,13 @@ Route::post('/login', [AuthApiController::class,'login']);
 //RUTAS PRIVADAS
 //rutas protegidas
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::post('logout',[AuthApiController::class,'logout']);
+    
     Route::get('/clients',[ClientApiController::class,'index']);
     Route::get('/cities',[CityApiController::class,'index']);
+
+    //modificar nombre usuario
+    Route::put('/usuario/{usuario}',[AuthApiController::class,'update']);
+
+    //logout usuario
+    Route::post('logout',[AuthApiController::class,'logout']);
 });
