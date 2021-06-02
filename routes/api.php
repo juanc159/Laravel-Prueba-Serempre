@@ -33,7 +33,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/cities',[CityApiController::class,'index']);
 
     //modificar nombre usuario
-    Route::put('/usuario/{usuario}',[AuthApiController::class,'update']);
+    Route::get('/user/{info}',[AuthApiController::class,'show']);
+    Route::put('/user/{info}',[AuthApiController::class,'update']);
 
     //logout usuario
     Route::post('logout',[AuthApiController::class,'logout']);

@@ -77,11 +77,14 @@ class AuthApiController extends Controller
 
     }
 
+    public function show($info){
+        return User::find($info);
+    }
 
-    public function update(Request $request, User $usuario){
+    public function update(Request $request, User $info){
             //$usuario->update($request->all());
             return response()->json([
-                'data' => $usuario->update($request->all()),
+                'data' => $info->update($request->all()),
                 'res' => true,
                 'msg' => 'Actualizado con exito'
             ]);
