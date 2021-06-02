@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">CRUD Cities</div>
+                    <div class="card-header">CRUD Clientes</div>
                        
 
                     <div class="card-body">
@@ -25,9 +25,15 @@
                                     
                                         
                                         <div class="form-group">
-                                            <label for="first_name">Nombre</label>
-                                            <input type="text" v-model="ciudad.name" class="form-control" id="name" placeholder="Ciudad">
-                                            <small ></small>
+                                            <label for="name">Nombre</label>
+                                            <input type="text" v-model="cliente.name" class="form-control" id="name" placeholder="Cliente">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="name">Ciudad</label>
+                                            <select class="form-control mb-3"    v-model="cliente.id_city">
+                                                <option  v-for="(item, index) in inputCiudades" :key="index"  :value="item.id">{{item.name}}</option>
+                                            </select>
                                         </div>
                                     
                                 </div>
@@ -43,21 +49,23 @@
 
 
 
-                        <table id="tabla_ciudades" class="table table-striped table-hover table-bordered text-center" style="width:100%">
+                        <table id="tabla_clientes" class="table table-striped table-hover table-bordered text-center" style="width:100%">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Nombre</th>
+                                    <th scope="col">Ciudad</th>
                                     <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="ciudad in ciudades" :key="ciudad.id">
-                                    <th scope="row">{{ciudad.id}}</th>
-                                    <td>{{ciudad.name}}</td>
+                                <tr v-for="cliente in clientes" :key="cliente.id">
+                                    <th scope="row">{{cliente.id}}</th>
+                                    <td>{{cliente.name}}</td>
+                                    <td>{{cliente.name_city}}</td>
                                     <td>
-                                        <button class="btn btn-warning"   @click="update = true; open_modal(ciudad)">Editar</button>
-                                        <button class="btn btn-danger" @click='eliminar(ciudad.id)'>Eliminar</button>
+                                        <button class="btn btn-warning"   @click="update = true; open_modal(cliente)">Editar</button>
+                                        <button class="btn btn-danger" @click='eliminar(cliente.id)'>Eliminar</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -87,31 +95,51 @@ window.JSZip = jszip; //esta linea es para que muestre y fucione el boton EXCEL
     export default {
                 data(){
             return{
-                ciudades: [],
+                clientes: [],
                 form_modal: false,
                 tilte_modal:'',
+                inputCiudades: [],
                 update : true,
                 id : 0,
                 ciudad: {
-                    name : ''
+                    id: '',
+                    name: ''
+                },
+                cliente: {
+                    name : '',
+                    id_city: '',
+                    name_city:''
                 }
             }
         },
         mounted() {
+            this.cargarCiudades();
             this.list();
             
         },
         methods: {
+            cargarCiudades(){
+                axios.get('api/cities').then(res=>{
+                    this.inputCiudades = res.data;
+                })
+            },
             //METODO PARA LISTAR CON BOTONES
              mytable(){
                 this.$nextTick(()=>{
-                    $('#tabla_ciudades').DataTable();
+                    $('#tabla_clientes').DataTable();
                 })
             },
             list(){
-                axios.get('api/cities').then(res=>{
-                    this.ciudades = res.data;
-                    //console.log(this.ciudades);
+                axios.get('api/clients').then(res=>{
+                    this.clientes = res.data;
+                    this.clientes.forEach(element => {
+                        this.inputCiudades.forEach(element2 => {
+                            if(element2.id===element.id_city){//SI EL ELEMENTO CONINCIDE GUARDA EL NOMBRE EN LA VAIRABLE EN VEZ DEL ID
+                                element.name_city = element2.name;
+                            }
+                        });                        
+                    });
+                    //console.log(this.clientes);
                     this.mytable();
                 });
             },
@@ -119,12 +147,14 @@ window.JSZip = jszip; //esta linea es para que muestre y fucione el boton EXCEL
                 if(this.update){
                     this.tilte_modal='MODIFICAR CIUDAD ' +data.id;
                     this.id = data.id;
-                    this.ciudad.name = data.name; 
+                    this.cliente.name = data.name; 
+                    this.cliente.id_city = data.id_city; 
                 }
                 else{
                     this.tilte_modal='CREAR CIUDAD';
                     this.id = 0;
-                    this.ciudad.name = '';
+                    this.cliente.name = '';
+                    this.cliente.id_city = '';
                 }
                 this.form_modal = true;
                 
@@ -134,19 +164,18 @@ window.JSZip = jszip; //esta linea es para que muestre y fucione el boton EXCEL
             },
             save(){
                 if(this.update){
-                    axios.put('/ciudades/'+this.id,this.ciudad).then(res=>{
+                    axios.put('/clientes/'+this.id,this.cliente).then(res=>{
                     });
                 }else{
-                    //console.log(this.contact);
-                    axios.post('/ciudades',this.ciudad).then(res=>{
+                    console.log(this.cliente.name);
+                    axios.post('/clientes',this.cliente).then(res=>{
                     });
-                    
                 }
                 this.close_modal();
                 this.list();
             },
             eliminar(id){
-                axios.delete('ciudades/'+id).then(res=>{
+                axios.delete('clientes/'+id).then(res=>{
                     this.list();
                 });
                 

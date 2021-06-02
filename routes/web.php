@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\ClientsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::apiResource('/ciudades',CityController::class)->parameters(['ciudades' => 'ciudad']);
+Route::apiResource('/clientes',ClientsController::class)->parameters(['clientes' => 'cliente']);

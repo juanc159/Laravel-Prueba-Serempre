@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\API\CityApiController;
+use App\Http\Controllers\API\ClientApiController;
+use App\Http\Controllers\ClientsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +22,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('/cities',CityApiController::class);
+Route::apiResource('/clients',ClientApiController::class);

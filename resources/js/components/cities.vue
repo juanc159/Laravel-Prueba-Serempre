@@ -25,7 +25,7 @@
                                     
                                         
                                         <div class="form-group">
-                                            <label for="first_name">Nombre</label>
+                                            <label for="name">Nombre</label>
                                             <input type="text" v-model="ciudad.name" class="form-control" id="name" placeholder="Ciudad">
                                             <small ></small>
                                         </div>
