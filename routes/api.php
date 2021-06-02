@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\API\AuthApiController;
 use App\Http\Controllers\API\CityApiController;
 use App\Http\Controllers\API\ClientApiController;
-use App\Http\Controllers\ClientsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,9 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+/*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
 
-Route::apiResource('/cities',CityApiController::class);
-Route::apiResource('/clients',ClientApiController::class);
+//RUTAS PUBLICAS
+Route::post('/register', [AuthApiController::class,'register']);
+Route::post('/login', [AuthApiController::class,'login']);
+
+//RUTAS PRIVADAS
+//rutas protegidas
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('logout',[AuthApiController::class,'logout']);
+    Route::get('/clients',[ClientApiController::class,'index']);
+    Route::get('/cities',[CityApiController::class,'index']);
+});

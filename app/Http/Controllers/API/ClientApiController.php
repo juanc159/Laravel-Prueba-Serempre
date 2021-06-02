@@ -10,6 +10,11 @@ class ClientApiController extends Controller
 {
     public function index()
     {
+        /*$cliente =  Client::all();
+        return response()->json([
+            'data' => $cliente
+        ]);
+        */
         return Client::all();
     }
 }
