@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ClientsExport;
+use App\Imports\ClientsImport;
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ClientsController extends Controller
 {
@@ -41,5 +44,21 @@ class ClientsController extends Controller
     public function destroy(Client $cliente)
     {
         $cliente->delete();
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new ClientsExport, 'clientes.xlsx');
+    }
+
+    public function importForm(){
+        return view('clientes.importForm');
+    }
+    
+    public function import() 
+    {
+        Excel::import(new ClientsImport, 'clientes.xlsx');
+        
+        return redirect('/clientes')->with('success', 'All good!');
     }
 }

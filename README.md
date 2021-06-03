@@ -10,3 +10,12 @@ php artisan ui vue --auth
 3. creamos los crud de cities y clients con vue
 
 4. instalacion del jwt con api
+
+
+
+5. exportar a excel
+    https://docs.laravel-excel.com/3.1/getting-started/installation.html
+    installacion
+        composer require maatwebsite/excel  (no funciona)
+        composer require maatwebsite/excel --ignore-platform-reqs
+

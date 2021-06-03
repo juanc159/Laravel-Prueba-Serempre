@@ -11,6 +11,9 @@
                         <button  type="button" class="btn btn-primary mb-3" @click="update = false; open_modal()">
                         Agregar
                         </button>
+                        <a href="clientes/exportExcel" class="btn btn-primary btn-sm float-right">Exportar a Excel</a>
+                        
+
                         <!-- Modal -->
                         <div class="modal " :class="{show:form_modal}">
                             <div class="modal-dialog" role="document">

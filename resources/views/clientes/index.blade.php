@@ -6,6 +6,7 @@
 
 @section('content')
 <div class="container">
+
     <client-crud></client-crud>
 </div>
 

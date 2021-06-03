@@ -23,6 +23,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//exportar excel
+Route::get('/clientes/exportExcel',[ClientsController::class,'exportExcel'])->name('clientes.exportExcel');
 
+//importar excel
+Route::get('/clientes/importForm',[ClientsController::class,'importForm'])->name('clientes.importForm');
 Route::apiResource('/ciudades',CityController::class)->parameters(['ciudades' => 'ciudad']);
 Route::apiResource('/clientes',ClientsController::class)->parameters(['clientes' => 'cliente']);
+
