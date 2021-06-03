@@ -17,5 +17,6 @@ php artisan ui vue --auth
     https://docs.laravel-excel.com/3.1/getting-started/installation.html
     installacion
         composer require maatwebsite/excel  (no funciona)
+        composer require phpoffice/phpspreadsheet --ignore-platform-reqs
         composer require maatwebsite/excel --ignore-platform-reqs
 

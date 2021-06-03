@@ -54,10 +54,10 @@ class ClientsController extends Controller
     public function importForm(){
         return view('clientes.importForm');
     }
-    
-    public function import() 
+
+    public function import(Request $request) 
     {
-        Excel::import(new ClientsImport, 'clientes.xlsx');
+        Excel::import(new ClientsImport, $request->file);
         
         return redirect('/clientes')->with('success', 'All good!');
     }

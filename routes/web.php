@@ -28,6 +28,9 @@ Route::get('/clientes/exportExcel',[ClientsController::class,'exportExcel'])->na
 
 //importar excel
 Route::get('/clientes/importForm',[ClientsController::class,'importForm'])->name('clientes.importForm');
+Route::post('/import',[ClientsController::class,'import'])->name('clientes.import');
+
+
 Route::apiResource('/ciudades',CityController::class)->parameters(['ciudades' => 'ciudad']);
 Route::apiResource('/clientes',ClientsController::class)->parameters(['clientes' => 'cliente']);
 
