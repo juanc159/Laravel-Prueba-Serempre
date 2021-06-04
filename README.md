@@ -44,8 +44,33 @@ php artisan custom:td
 ```
 php artisan serve
 ```
+_INSTALACION FINALIZADA_
 
+## API con Autenticacion JWT
+_Segun los requsitos del Proyecto para la elaboracion de la API_
+```
+METODO    URL               DESCRIPCION
+POST      /api/login        Iniciar sesion 
+GET       /api/user/info    Obtener Usuario segun ID
+PUT       /api/user/info    Actualizar un Usuario
+```
+_EXTRAS_
+```
+METODO    URL               DESCRIPCION
+POST      /api/register     Registro de Usuario
+GET       /api/clients      Consulta todos los Cientes   
+GET       /api/cities       Consulta todos las Ciudades
+```
 
+# Informacion EXTRA del Proyecto
+
+Este proyecto fue elaborado con los siguientes elementos
+* autenticacion de usuario con ui vue --auth
+* Bootstrap para el dise;o
+* Existen dos componentes VUE para los CRUD (clients, cities) y se uso Datatable para listar, buscar, y paginar
+* Se puede EXPOTAR los registros de clientes, pero para poder IMPORTAR registros mediante un EXCEL debe instalar las extenciones necesarias (revisar el apartado de instalacion)
+* Existe una API que usa Autenticacion JWT con LARAVEL-SANCTUM
+* Todo usuario puede cambiar su FOTO de perfil 
 
 1. se instalo autenticacion de usuario con vue 
 ```
