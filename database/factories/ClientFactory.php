@@ -22,7 +22,8 @@ class ClientFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name(),
+            'id_city' => rand(1,30),
         ];
     }
 }

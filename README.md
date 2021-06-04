@@ -1,3 +1,4 @@
+
 1. se instalo autenticacion de usuario con vue 
 ```
 composer require laravel/ui

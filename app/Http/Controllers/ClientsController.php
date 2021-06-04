@@ -59,14 +59,10 @@ class ClientsController extends Controller
     {
         
 
-        // Determine si el tamaño alcanza los 20M
-        if ($request->getClientSize() >= 1000000) {
-            echo "<script>alert('tamano maximo es 1M')</script>";
-            return redirect('/clientes/importForm');
-        }
+       
 
         Excel::import(new ClientsImport, $request->file);
         
-        return redirect('/clientes')->with('success', 'All good!');
+        return redirect('/home')->with('success', 'All good!');
     }
 }
