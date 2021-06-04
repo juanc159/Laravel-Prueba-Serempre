@@ -1,9 +1,22 @@
 ### Instalacion
-corremos los siguientes comandos:
+instalamos las dependencias:
 ```
-npm install
-npm run dev
+composer install
 ```
+si le muestra error es por que no ha activado las extenciones necesarias.
+en dado caso consulte mmmm y habilite estas opciones en php.ini
+
+si desea activar esas extensiones en otra ocacion puede ejecutar el siguiente comando
+```
+composer install --ignore-platform-reqs
+```
+
+#  Encryption Key
+ejecute el siguiente comando para generar la Encryption Key
+```
+php artisan key:generate
+```
+
 
 # Base de datos
 1. en el archivo .env se debe agregar el nombre de la base de datos 
