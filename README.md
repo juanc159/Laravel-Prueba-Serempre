@@ -51,8 +51,8 @@ _Segun los requsitos del Proyecto para la elaboracion de la API_
 ```
 METODO    URL               DESCRIPCION
 POST      /api/login        Iniciar sesion 
-GET       /api/user/info    Obtener Usuario segun ID
-PUT       /api/user/info    Actualizar un Usuario
+GET       /api/user/{info}  Obtener Usuario segun ID
+PUT       /api/user/{info}  Actualizar un Usuario
 ```
 _EXTRAS_
 ```
