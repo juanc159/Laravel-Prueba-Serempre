@@ -77,5 +77,5 @@ Este proyecto fue elaborado con los siguientes elementos
 
 
 ## Elaborado por:
-_JUAN CARLOS MORENO GUERRA_
+_JUAN CARLOS MORENO GUERRA,_
 _INGENIERO EN INFORMATICA_
