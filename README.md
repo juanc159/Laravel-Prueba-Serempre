@@ -60,6 +60,7 @@ METODO    URL               DESCRIPCION
 POST      /api/register     Registro de Usuario
 GET       /api/clients      Consulta todos los Cientes   
 GET       /api/cities       Consulta todos las Ciudades
+POST       /logout          Finalizar Sesion
 ```
 
 # Informacion EXTRA del Proyecto
@@ -68,34 +69,13 @@ Este proyecto fue elaborado con los siguientes elementos
 * autenticacion de usuario con ui vue --auth
 * Bootstrap para el dise;o
 * Existen dos componentes VUE para los CRUD (clients, cities) y se uso Datatable para listar, buscar, y paginar
-* Se puede EXPOTAR los registros de clientes, pero para poder IMPORTAR registros mediante un EXCEL debe instalar las extenciones necesarias (revisar el apartado de instalacion)
+* Se puede EXPOTAR los registros de clientes, pero para poder IMPORTAR registros mediante un EXCEL debe instalar las extenciones necesarias (REVISAR EL APARTADO DE INSTALACION)
 * Existe una API que usa Autenticacion JWT con LARAVEL-SANCTUM
-* Todo usuario puede cambiar su FOTO de perfil 
-
-1. se instalo autenticacion de usuario con vue 
-```
-composer require laravel/ui
-php artisan ui vue --auth 
-```
-
-2. CREAR TABLAS DE LA BASE DE DATOS
-    creamos la tabla cities con modelo controlador y factory
-    cramos la table clients con modelo y controlador
-3. creamos los crud de cities y clients con vue
-
-4. instalacion del jwt con api
+* Todo usuario puede cambiar su FOTO de perfil
+* Cuando se registra un Usuario le llega a su correo un email. Siemore y cuando se configure el archivo .env (REVISAR EL APARTADO DE INSTALACION)
 
 
 
-5. exportar e importar  excel
-    REVISAR LOS REQUERIMIENTO DE LA PAGINA 
-        https://docs.laravel-excel.com/3.1/getting-started/installation.html
-    installacion
-        composer require phpoffice/phpspreadsheet  (si no funciona usar el de abajo)
-        composer require maatwebsite/excel (si no funciona usar el de abajo)
-        composer require phpoffice/phpspreadsheet --ignore-platform-reqs
-        composer require maatwebsite/excel --ignore-platform-reqs
-
-
-6. se envia un MAIL al correo del usuario que se registro, se envia por medio de jobs asi que se debe ejecutar
-    php artisan queue:work
+## Elaborado por:
+_JUAN CARLOS MORENO GUERRA_
+_INGENIERO EN INFORMATICA_
