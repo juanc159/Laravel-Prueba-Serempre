@@ -1,49 +1,46 @@
-### Instalacion
+# INSTALACION
 instalamos las dependencias:
 ```
 composer install
 ```
-si le muestra error es por que no ha activado las extenciones necesarias.
-en dado caso consulte mmmm y habilite estas opciones en php.ini
+Si le muestra error es por que no ha activado las extenciones necesarias.
+* Puede consultar [Extenciones PHP](https://docs.laravel-excel.com/3.1/getting-started/installation.html)
 
 si desea activar esas extensiones en otra ocacion puede ejecutar el siguiente comando
 ```
 composer install --ignore-platform-reqs
 ```
+* Tenga en cuenta que al no activar las extenciones requeridas, NO PODRA IMPORTAR ARCHIVOS DE EXCEL
 
-#  Encryption Key
-ejecute el siguiente comando para generar la Encryption Key
+## Configuracion Archivo .env
+*  Existe un archivo .env.example que esta en la carpeta raiz, debe cambiarle el nombre a .env 
+* ejecute el siguiente comando para generar la Encryption Key
 ```
 php artisan key:generate
 ```
-
-
-# Base de datos
-1. en el archivo .env se debe agregar el nombre de la base de datos 
+* Cree una base de Datos en su MySQL y agrege el nombre de la base de datos, asi como su usuario y password
 ```
 DB_DATABASE=
 DB_USERNAME=
 DB_PASSWORD=
 ```
-2. se uso el host de gmail solo falta agregar las credenciales MAIL, para que se ejecuten los correos
+* Se uso el host de gmail para el envio de MAILS, solo falta agregar las credenciales MAIL, para que se ejecuten los correos
 ```
 MAIL_USERNAME=null
 MAIL_PASSWORD=null
 MAIL_FROM_ADDRESS=null
 ```
 
-# inicializamos la base de datos
-1. creamos las tablas
+## Ultimos Comandos a Ejecutar
+* Creamos las tablas
 ```
 php artisan migrate
 ```
-
-2. creamos los datos por defecto con el COMANDO creado 
+* Creamos los datos por predefinidos 
 ```
 php artisan custom:td
 ```
-
-3. inicializamos el servidor
+* Inicializamos el servidor
 ```
 php artisan serve
 ```
