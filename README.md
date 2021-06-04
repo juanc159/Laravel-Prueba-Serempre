@@ -1,3 +1,27 @@
+### Instalacion
+corremos los siguientes comandos:
+```
+npm install
+npm run dev
+```
+
+# inicializamos la base de datos
+1. creamos las tablas
+```
+php artisan migrate
+```
+
+2. creamos los datos por defecto con el COMANDO creado 
+```
+php artisan custom:td
+```
+
+3. inicializamos el servidor
+```
+php artisan serve
+```
+
+
 
 1. se instalo autenticacion de usuario con vue 
 ```
