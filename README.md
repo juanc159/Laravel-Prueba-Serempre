@@ -5,6 +5,20 @@ npm install
 npm run dev
 ```
 
+# Base de datos
+1. en el archivo .env se debe agregar el nombre de la base de datos 
+```
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+```
+2. se uso el host de gmail solo falta agregar las credenciales MAIL, para que se ejecuten los correos
+```
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_FROM_ADDRESS=null
+```
+
 # inicializamos la base de datos
 1. creamos las tablas
 ```
