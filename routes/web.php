@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AuthApiController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ClientsController;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

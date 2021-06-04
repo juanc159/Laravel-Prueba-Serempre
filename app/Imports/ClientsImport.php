@@ -4,9 +4,8 @@ namespace App\Imports;
 
 use App\Models\Client;
 use Maatwebsite\Excel\Concerns\ToModel;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class ClientsImport implements ToModel,WithHeadingRow
+class ClientsImport implements ToModel
 {
     /**
     * @param array $row
@@ -17,8 +16,9 @@ class ClientsImport implements ToModel,WithHeadingRow
     {
         return new Client([
             //
-           'name'    => $row['name'], 
-           'id_city' => $row['id_city'],
+            'id'     => $row[0],
+           'name'    => $row[1], 
+           'id_city' => $row[2],
         ]);
     }
 }

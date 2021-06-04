@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\EnviarEmail;
+use App\Mail\UsersMail;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -71,6 +74,12 @@ class RegisterController extends Controller
         ]);
 
         $token = $usuario->createToken('myapptoken')->plainTextToken; // SE CREA EL TOKEN EN FORMATO PLANO
+        
+            $details = [
+                'title' => $data['name'],
+                'body'  => 'Ha creado su registro exitosamente'
+            ];
+            EnviarEmail::dispatch($data['email'],$details);
 
         return $usuario;
     }
