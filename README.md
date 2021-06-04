@@ -1,4 +1,4 @@
-# INSTALACION
+## INSTALACION
 instalamos las dependencias:
 ```
 composer install
@@ -12,7 +12,7 @@ composer install --ignore-platform-reqs
 ```
 * Tenga en cuenta que al no activar las extenciones requeridas, NO PODRA IMPORTAR ARCHIVOS DE EXCEL
 
-## Configuracion Archivo .env
+# Configuracion Archivo .env
 *  Existe un archivo .env.example que esta en la carpeta raiz, debe cambiarle el nombre a .env 
 * ejecute el siguiente comando para generar la Encryption Key
 ```
@@ -31,7 +31,7 @@ MAIL_PASSWORD=null
 MAIL_FROM_ADDRESS=null
 ```
 
-## Ultimos Comandos a Ejecutar
+# Ultimos Comandos a Ejecutar
 * Creamos las tablas
 ```
 php artisan migrate
